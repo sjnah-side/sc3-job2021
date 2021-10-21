@@ -1,10 +1,6 @@
-//SETUP
 (
 s.boot;
 
-
-//DATABASE //
-//g (DIC | GENE : SEQ)
 g = Dictionary.new;
 g.putPairs(['HPa_CUL4', File("2_HesperelaeaPalmeri_CUL4_cullin.txt".standardizePath, "r").readAllString]); //993 (331)
 g.putPairs(['HPa_OCO', File("2_HesperelaeaPalmeri_OCO_constanks-like.txt".standardizePath, "r").readAllString]); //599 (199)
@@ -20,7 +16,6 @@ g.putPairs(['ML_chl', File("2_MagnoliaLatahensis_rcbL_chloroplast.txt".standardi
 g.putPairs(['HPr_rcbl', File("2_HymenaeaProtera_rcbL.txt".standardizePath, "r").readAllString]); //348 (116)
 g.putPairs(['PP_chl', File("2_PerseaPseudocarolinesis_rcbL_chloroplast.txt".standardizePath, "r").readAllString]); //699 (233)
 
-//c (DIC | CODON : AMINO ACID)
 c = Dictionary.new;
 c.putPairs(['TAA','STOP', 'TAG','STOP', 'TGA','STOP']);
 c.putPairs(['GCT','ala', 'GCC','ala', 'GCA','ala', 'GCG','ala']); //1-1
@@ -45,5 +40,5 @@ c.putPairs(['GTT','val', 'GTC','val', 'GTA','val', 'GTG','val']); //1-2
 c.putPairs(['NNN','']);
 
 l = Dictionary.new;
-l.putPairs(['leu', 1.3, 'ser', 2.0, 'arg', 4.1, 'asp', 2.4, 'val', 1.2, 'gly', 1.0, 'pro', 1.8, 'thr', 2.1, 'ala', 1.1, 'ile', 1.4, 'lys', 4.0, 'phe', 1.6, 'tyr', 2.3, 'cys', 2.2, 'gln', 2.5, 'his', 4.2, 'glu', 3.1, 'met', 1.5, 'try', 1.7, 'STOP', rrand(0.0, 5.0), '', 0]);
+l.putPairs(['leu', 1.3, 'ser', 2.0, 'arg', 4.1, 'asp', 2.4, 'val', 1.2, 'gly', 1.0, 'pro', 1.8, 'thr', 2.1, 'ala', 1.1, 'ile', 1.4, 'lys', 4.0, 'phe', 1.6, 'tyr', 2.3, 'cys', 2.2, 'gln', 2.5, 'his', 4.2, 'glu', 3.1, 'met', 1.5, 'try', 1.7, 'STOP', rrand(0.0, 5.0), '', rrand(0.0, 0.1)]);
 )

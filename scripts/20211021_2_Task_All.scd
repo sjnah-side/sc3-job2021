@@ -1,7 +1,13 @@
 (
-~p1 = Task({
-	g['HPa_CUL4'].size.div(3).do { |i| // inf = infinite
+~o = Task({
 
+//part1
+	var sum, lenth, index;
+
+	g['HPa_CUL4'].size.div(3).postln;
+	g['HPa_CUL4'].size.div(3).do { |i|
+
+	3*i.postln;
 	g['HPa_CUL4'][3*i..3*i+2].postln;
 
 	x = case
@@ -12,8 +18,6 @@
 	{g['HPa_CUL4'][3*i].asString == "N"}  {0};
 	x.postln;
 
-
-//	z = rrand(1.0,2.0);
 
 	if (c[g['HPa_CUL4'][3*i..3*i+2].asSymbol] == 'leu', {Pbindef(\part1, \freq, (x + 12 + [0,4,8]).midicps.do, \amp, 0.3, \dur, y).play} && {y = l[c[g['HPa_CUL4'][3*i..3*i+2].asSymbol]]}); //6
 	if (c[g['HPa_CUL4'][3*i..3*i+2].asSymbol] == 'ser', {Pbindef(\part1, \freq, (x - 12 + [0,3,7]).midicps.do, \amp, 0.2, \dur, y).play} && {y = l[c[g['HPa_CUL4'][3*i..3*i+2].asSymbol]]}); //6
@@ -43,6 +47,107 @@
 	y.postln;
 	("").postln;
 
-}})
-)
+};
+e = 1;
 
+
+//part2
+	g['HPa_CUL4'].size.postln;
+	g['HPa_CUL4'].size.do{ |i|
+
+	i.postln;
+	g['HPa_CUL4'][i].postln;
+
+	x = case
+	{g['HPa_CUL4'][i].asString == "A"}  {69 + [0, -12, 12].choose}
+	{g['HPa_CUL4'][i].asString == "G"}  {67 + [0, -12, 12].choose}
+	{g['HPa_CUL4'][i].asString == "C"}  {60 + [0, -12, 12].choose}
+	{g['HPa_CUL4'][i].asString == "T"}  {Prand(#[62,64,65,71, 1]) + [0, -12, 12].choose}
+	{g['HPa_CUL4'][i].asString == "N"}  {0};
+	x.postln;
+
+	y = case
+	{g['HPa_CUL4'][i].asString == "A"}  {("A".ascii + [0, -12, 12].choose).midicps}
+	{g['HPa_CUL4'][i].asString == "G"}  {("G".ascii + [0, -12, 12].choose).midicps}
+	{g['HPa_CUL4'][i].asString == "C"}  {("C".ascii + [0, -12, 12].choose).midicps}
+	{g['HPa_CUL4'][i].asString == "T"}  {("T".ascii + [0, -12, 12].choose).midicps}
+	{g['HPa_CUL4'][i].asString == "N"}  {("N".ascii + [0, -12, 12].choose).midicps};
+	y.postln;
+
+	z = rrand(0.0, 0.75);
+	z.postln;
+
+	if (g['HPa_CUL4'][i].asString == "A",
+			{Synth(\part2, [\freq1, x, \freq2, y, \dur, z])});
+	if (g['HPa_CUL4'][i].asString == "G",
+			{Synth(\part2,[\freq1, x, \freq2, y, \dur, z])});
+	if (g['HPa_CUL4'][i].asString == "C",
+			{Synth(\part2, [\freq1, x, \freq2, y, \dur, z])});
+	if (g['HPa_CUL4'][i].asString == "T",
+			{Synth(\part2, [\freq1, x, \freq2, y, \dur, z])});
+	if (g['HPa_CUL4'][i].asString == "N",
+			{Synth(\part2, [\freq1, x, \freq2, y, \dur, z])});
+
+	z.yield;
+	("").postln;
+};
+e = 2;
+
+
+//part3
+  sum = 0;
+  lenth = 0;
+  index = 0;
+
+  g['HPa_CUL4'].size.postln;
+  while ({sum < g['HPa_CUL4'].size},
+
+	{lenth = rrand(1, 10);
+
+	v = List.newClear;
+	w = List.newClear;
+
+	g['HPa_CUL4'][sum..sum+lenth-1].size.do
+
+	{ |i|
+
+	if (g['HPa_CUL4'][sum+index].asString == "A", {x = 69 + [0, -12, 12].choose});
+	if (g['HPa_CUL4'][sum+index].asString == "G", {x = 67 + [0, -12, 12].choose});
+	if (g['HPa_CUL4'][sum+index].asString == "C", {x = 60 + [0, -12, 12].choose});
+	if (g['HPa_CUL4'][sum+index].asString == "T", {x = [62,64,65,71].choose + [0, -12, 12].choose});
+	if (g['HPa_CUL4'][sum+index].asString == "N", {x = 0});
+
+	v.array.add(x);
+
+	if (g['HPa_CUL4'][sum+index].asString == "A", {y = ("A".ascii + [0, -12, 12].choose)});
+	if (g['HPa_CUL4'][sum+index].asString == "G", {y = ("G".ascii + [0, -12, 12].choose)});
+	if (g['HPa_CUL4'][sum+index].asString == "C", {y = ("C".ascii + [0, -12, 12].choose)});
+	if (g['HPa_CUL4'][sum+index].asString == "T", {y = ("T".ascii + [0, -12, 12].choose)});
+	if (g['HPa_CUL4'][sum+index].asString == "N", {y = ("N".ascii + [0, -12, 12].choose)});
+
+	w.array.add(y[0]);
+
+	index = index + 1;
+	};
+
+	g['HPa_CUL4'][sum..sum+lenth-1].size.postln;
+	g['HPa_CUL4'][sum..sum+lenth-1].postln;
+
+	v.postln;
+	w.postln;
+
+	Synth(\part3_1, [\freq, (v+w), \ring, 1!v.size, \dur, g['HPa_CUL4'][sum..sum+lenth-1].size]);
+	Synth(\part3_2, [\freq, (v+w).midicps, \ring, 1!v.size, \constant, v.size, \dur, g['HPa_CUL4'][sum..sum+lenth-1].size]);
+	Synth(\part3_3, [\in, v.sum + w.sum,  \dur, g['HPa_CUL4'][sum..sum+lenth-1].size]);
+
+	g['HPa_CUL4'][sum..sum+lenth-1].size.yield;
+	g['HPa_CUL4'][sum..sum+lenth-1].size.postln;
+
+	"sum".postln;
+	sum = sum + lenth;
+	sum.postln;
+});
+e = 3;
+
+})
+)

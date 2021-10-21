@@ -12,5 +12,3 @@ SynthDef(\part2,
 	Out.ar(0, sig!2);
 	}).add;
 )
-
-

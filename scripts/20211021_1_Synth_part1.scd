@@ -1,6 +1,5 @@
-//INSTRUMENTS
-//Cello-Like
 (
+
 s.waitForBoot({
 	// cello like sound
 	SynthDef(\cello, {
@@ -61,4 +60,3 @@ Pbindef(\part1,
 	\auxsend, 0.1,
 );
 )
-
