@@ -9,9 +9,13 @@ $ sclang scripts/main.scd
 
 ## Auto Operation on Boot
 
-### set shell script chmod
+### shell script setup
 ```bash
+# set shell script authentication
 $ chmod +x autorun.sh
+
+# edit main.scd name of `autorun.sh`
+$ vim autorun.sh
 ```
 
 ### add crontab
