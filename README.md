@@ -11,18 +11,23 @@ $ sclang scripts/main.scd
 
 ### set shell script chmod
 ```bash
-$ chmod +x run_code.sh
 $ chmod +x autorun.sh
 ```
 
 ### add crontab
 ```bash
-# add below line on crontab
+# add below line on crontab (not sudo crontab)
 $ crontab -e
 
 #-------- crontab ---------
-@reboot sh /home/pi/sc3-job2021/autorun.sh
+@reboot cd /home/pi/sc3-job2021 && ./autorun.sh & 
 #--------------------------
+```
+
+### shut down autorun
+access with ssh and type following command
+```bash
+$ killall jackd sclang scsynth
 ```
 
 

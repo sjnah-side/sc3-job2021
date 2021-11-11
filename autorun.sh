@@ -1,19 +1,19 @@
 #!/bin/bash
 
-# wait for booting
-sleep 10
+# Wait for boot
+sleep 20
 
-# Launch main.scd for initialization
-./run_code.sh &
+# Boot Jackd 
+export PATH=/usr/local/bin:$PATH
+export DISPLAY=:0.0
+JACK_NO_AUDIO_RESERVATION=1 /usr/bin/jackd -P75 -dalsa -dhw:0 -r44100 -p512 -n3 > /home/pi/sc3-job2021/log/autorun_jackd.log 2>&1 &
 
-# Get its PID
-PID=$!
+# Wait for jackd initialization
+sleep 10 
 
-# Wait for scsynth server boot for 10
-sleep 10
+# Run Sclang and Scsynth
+cd /home/pi/sc3-job2021/scripts
+sclang ./main.scd > /home/pi/sc3-job2021/log/autorun_sclang.log 2>&1
 
-# kill main.scd for initial server boot error
-kill $PID
-
-# relaunch main.scd
-./run_code.sh
+# if you want to stop, access with ssh
+# and run following command "killall jackd sclang scsynth"
