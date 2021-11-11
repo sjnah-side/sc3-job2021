@@ -12,6 +12,7 @@ JACK_NO_AUDIO_RESERVATION=1 /usr/bin/jackd -P75 -dalsa -dhw:0 -r44100 -p512 -n3 
 sleep 10 
 
 # Run Sclang and Scsynth
+# main_HPa, main_HPr, main_ML, main_PP
 cd /home/pi/sc3-job2021/scripts
 sclang ./main.scd > /home/pi/sc3-job2021/log/autorun_sclang.log 2>&1
 
