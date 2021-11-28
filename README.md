@@ -4,7 +4,7 @@ sc3-job2021
 ## Manual Operation
 ```bash
 $ git clone https://github.com/sjnah-side/sc3-job2021.git
-$ sclang scripts/main.scd
+$ sclang scripts/main_HPa.scd
 ```
 
 ## Auto Operation on Boot
@@ -14,7 +14,7 @@ $ sclang scripts/main.scd
 # set shell script authentication
 $ chmod +x autorun.sh
 
-# edit main.scd name of `autorun.sh`
+# edit main.scd filename
 $ vim autorun.sh
 ```
 

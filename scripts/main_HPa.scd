@@ -10,7 +10,7 @@
 
 
 
-~o = {fork{loop{
+~o = {
 
 //part1
 	var sum, lenth, index;
@@ -60,8 +60,8 @@
 	("").postln;
 
 };
-e = 11111111111;
-e.postln;
+//e = 11111111111;
+//e.postln;
 3.yield;
 
 
@@ -106,8 +106,8 @@ e.postln;
 	z.yield;
 	("").postln;
 };
-e = 2222222222;
-e.postln;
+//e = 2222222222;
+//e.postln;
 3.yield;
 
 
@@ -165,11 +165,14 @@ e.postln;
 	sum = sum + lenth;
 	sum.postln;
 });
-e = 3333333333;
-e.postln;
+//e = 3333333333;
+//e.postln;
 5.yield;
 
-}}};
+Server.quitAll;
+Server.killAll;
+0.exit;
+};
 
 ~o.play};
 ~t.play;
